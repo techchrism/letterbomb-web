@@ -1,5 +1,6 @@
 <template>
     <div>
+        <h4 class="text-center">Wii Mac Address</h4>
         <span v-for="i in 6">
             <v-text-field
                 class="macsegment"

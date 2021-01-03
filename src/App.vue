@@ -10,6 +10,11 @@
                         <mac-input/>
                     </v-col>
                 </v-row>
+                <v-row justify="center">
+                    <v-col cols="10" md="4" sm="8">
+                        <region-input/>
+                    </v-col>
+                </v-row>
             </v-container>
         </v-main>
     </v-app>
@@ -18,9 +23,10 @@
 <script>
 
 import MacInput from '@/components/MacInput';
+import RegionInput from '@/components/RegionInput';
 export default {
     name: 'App',
-    components: {MacInput},
+    components: {RegionInput, MacInput},
     data: () => ({
         //
     })
