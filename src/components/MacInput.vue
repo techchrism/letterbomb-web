@@ -13,10 +13,11 @@
                 v-model="mac[i - 1].value"
                 ref="fields"
                 @change="change"
+                hide-details
             />
             <span v-if="i !== 6"> - </span>
         </span>
-        <v-alert v-if="error" type="error">{{error}}</v-alert>
+        <v-alert v-if="error" type="error" class="mt-4">{{error}}</v-alert>
     </div>
 </template>
 
@@ -56,10 +57,17 @@ export default {
         },
         keyup(event, i)
         {
-            if(this.mac[i].value.length === 2 && i !== 5)
+            if(this.mac[i].value.length === 2)
             {
-                this.$refs.fields[i + 1].$refs.input.focus();
-                this.mac[i + 1].value = '';
+                if(i === 5)
+                {
+                    this.$refs.fields[i].$refs.input.blur();
+                }
+                else
+                {
+                    this.$refs.fields[i + 1].$refs.input.focus();
+                    this.mac[i + 1].value = '';
+                }
             }
         },
         change()
