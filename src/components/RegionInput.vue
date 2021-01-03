@@ -4,6 +4,7 @@
         <v-radio-group row
                        class="center-radio-group mt-0"
                        v-model="region"
+                       hide-details
         >
             <v-radio v-for="regionCode of ['U', 'E', 'J', 'K']"
                      :label="'4.3' + regionCode"
