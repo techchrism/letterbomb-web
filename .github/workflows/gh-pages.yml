@@ -4,7 +4,7 @@ on:
     branches:
       - trunk
     paths-ignore:
-      - 'readme.md'
+      - '*.md'
 jobs:
   build:
     runs-on: ubuntu-latest
