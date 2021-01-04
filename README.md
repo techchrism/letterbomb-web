@@ -1,4 +1,4 @@
-# LetterBomb Web
+# [LetterBomb Web](https://techchrism.github.io/letterbomb-web/)
 LetterBomb Wii payload generator written in clientside js
 
 Original python server source code: https://github.com/fail0verflow/letterbomb
