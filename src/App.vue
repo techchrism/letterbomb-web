@@ -6,7 +6,7 @@
                     <div class="text-center">
                         <img class="d-inline-block" src="@/assets/letterbomb_icon.png" alt="LetterBomb Icon"/>
                         <h1>Letterbomb Web</h1>
-                        <h3>Clientside version of Letterbomb that is statically hosted</h3>
+                        <h3>Clientside version of Letterbomb which is statically hosted</h3>
                     </div>
                 </v-row>
                 <v-row justify="center" class="mb-4">

@@ -79,7 +79,7 @@ export default {
             const oui = this.mac.slice(0, 3).map(v => v.value).join('').toUpperCase();
             if(oui.length === 6 && ouiList.indexOf(oui) === -1)
             {
-                this.error = 'Incorrect MAC address';
+                this.error = 'Invalid MAC address';
             }
             else
             {
@@ -87,6 +87,10 @@ export default {
             }
             this.$emit('change', {valid: this.valid, value: this.macString});
         }
+    },
+    mounted()
+    {
+        this.$refs.fields[0].$refs.input.focus();
     }
 }
 </script>
