@@ -2,15 +2,16 @@
     <v-app>
         <v-main>
             <v-container fluid class="mt-10">
-                <v-row justify="center" class="mb-2">
-                    <h1>Letterbomb Web</h1>
-                </v-row>
-                <v-row justify="center" class="mb-5">
-                    <h3>Clientside version of Letterbomb that is statically hosted</h3>
+                <v-row justify="center" class="mb-4">
+                    <div class="text-center">
+                        <img class="d-inline-block" src="@/assets/letterbomb_icon.png" alt="LetterBomb Icon"/>
+                        <h1>Letterbomb Web</h1>
+                        <h3>Clientside version of Letterbomb that is statically hosted</h3>
+                    </div>
                 </v-row>
                 <v-row justify="center" class="mb-4">
                     <v-col cols="10" md="4" sm="8">
-                        <mac-input @change="macChange"/>
+                        <mac-input @change="macChange" @finished="macFinished"/>
                     </v-col>
                 </v-row>
                 <v-row justify="center" class="mb-2">
@@ -27,6 +28,7 @@
                            elevation="2"
                            @click="downloadZip"
                            :loading="loading"
+                           ref="downloadButton"
                     >
                         Download Zip
                     </v-btn>
@@ -72,6 +74,10 @@ export default {
         {
             this.mac = value;
             this.macValid = valid;
+        },
+        macFinished()
+        {
+            this.$refs.downloadButton.$el.focus();
         },
         regionChange(value)
         {

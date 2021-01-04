@@ -62,6 +62,10 @@ export default {
                 if(i === 5)
                 {
                     this.$refs.fields[i].$refs.input.blur();
+                    requestAnimationFrame(() =>
+                    {
+                        this.$emit('finished')
+                    });
                 }
                 else
                 {
