@@ -1,4 +1,9 @@
-# letterbomb-web
+# LetterBomb Web
+LetterBomb Wii payload generator written in clientside js
+
+Original python server source code: https://github.com/fail0verflow/letterbomb
+
+Has the advantage of being statically hostable and no longer requiring a captcha 
 
 ## Project setup
 ```
@@ -14,6 +19,3 @@ npm run serve
 ```
 npm run build
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
