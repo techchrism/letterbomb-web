@@ -22,7 +22,17 @@
                     <v-checkbox label="Bundle HackMii Installer" v-model="bundle"/>
                 </v-row>
                 <v-row justify="center">
-                    <v-btn color="primary" :disabled="!downloadReady" elevation="2">Download Zip</v-btn>
+                    <v-btn color="primary"
+                           :disabled="!downloadReady"
+                           elevation="2"
+                           @click="downloadZip"
+                           :loading="loading"
+                    >
+                        Download Zip
+                    </v-btn>
+                </v-row>
+                <v-row justify="center" class="text-center mt-5" v-if="status">
+                    {{status}}
                 </v-row>
             </v-container>
         </v-main>
@@ -33,6 +43,10 @@
 
 import MacInput from '@/components/MacInput';
 import RegionInput from '@/components/RegionInput';
+import populateTemplate from './populateTemplate';
+import JSZip from 'jszip';
+import FileSaver from 'file-saver';
+
 export default {
     name: 'App',
     components: {RegionInput, MacInput},
@@ -40,12 +54,17 @@ export default {
         bundle: true,
         region: null,
         mac: null,
-        macValid: false
+        macValid: false,
+        status: null
     }),
     computed: {
         downloadReady()
         {
             return this.region !== null && this.macValid;
+        },
+        loading()
+        {
+            return this.status !== null;
         }
     },
     methods: {
@@ -58,9 +77,40 @@ export default {
         {
             this.region = value;
         },
-        downloadZip()
+        async getTemplate()
         {
+            return (await fetch(`template${this.region}.bin`)).arrayBuffer();
+        },
+        async getBundleZip()
+        {
+            return (await fetch('hackmii.zip')).blob();
+        },
+        async downloadZip()
+        {
+            this.status = 'Downloading template' + (this.bundle ? ' and HackMii bundle' : '');
+            const promises = [this.getTemplate()];
+            if(this.bundle)
+            {
+                promises.push(this.getBundleZip());
+            }
+            const [template, bundleZip] = await Promise.all(promises);
+            this.status = 'Populating template';
+            const {bytes, filePath} = populateTemplate(template, this.mac);
 
+            this.status = 'Zipping letterbomb';
+            const zip = new JSZip();
+            zip.file(filePath, bytes, {binary: true});
+            if(this.bundle)
+            {
+                this.status = 'Zipping bundle';
+                await zip.loadAsync(bundleZip);
+            }
+
+            this.status = 'Generating blob';
+            const blob = await zip.generateAsync({type: 'blob'});
+            this.status = 'Saving zip';
+            FileSaver.saveAs(blob, 'LetterBomb.zip');
+            this.status = null;
         }
     }
 };
