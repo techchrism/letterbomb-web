@@ -40,13 +40,13 @@ const MacInput: Component<MacInputProps> = (props) => {
     return (
         <>
             <div class="text-2xl">
-                <label class="block text-xl font-semibold" for={firstInputID}>Wii MAC Add&#8204;ress</label>
+                <label class="block text-xl font-semibold mb-1" for={firstInputID}>Wii MAC Add&#8204;ress</label>
                 <For each={[0,1,2,3,4,5]}>
                     {(i) => (
                         <>
                             <input type="text"
                                    id={i === 0 ? firstInputID : undefined}
-                                   class="input input-bordered w-10 h-10 px-2 text-center text-accent-content"
+                                   class="input input-bordered shadow-md w-10 h-10 px-2 text-center text-accent-content bg-base-200"
                                    maxlength="2"
                                    autocomplete="off"
                                    ref={(el) => inputIDs[i] = el}
