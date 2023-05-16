@@ -1,5 +1,5 @@
 {
-  "name": "vite-template-solid",
+  "name": "letterbomb-web",
   "version": "0.0.0",
   "description": "",
   "scripts": {
@@ -17,6 +17,10 @@
     "vite-plugin-solid": "^2.5.0"
   },
   "dependencies": {
+    "crypto-js": "^4.1.1",
+    "daisyui": "^2.51.6",
+    "file-saver": "^2.0.5",
+    "jszip": "^3.10.1",
     "solid-js": "^1.6.10"
   }
 }
