@@ -23,7 +23,7 @@ const MacInput: Component<MacInputProps> = (props) => {
     })
 
     createEffect(() => {
-        const mac = inputValues.map(v => v[0]()).join(':').toUpperCase()
+        const mac = inputValues.map(v => v[0]()).join('').toUpperCase()
         props.onMacChange(mac, isValid())
     })
 
