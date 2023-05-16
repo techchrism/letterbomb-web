@@ -1,14 +1,9 @@
-## Usage
+# [LetterBomb Web](https://techchrism.github.io/letterbomb-web/)
+LetterBomb Wii payload generator written in clientside js
 
-Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
+Original python server source code: https://github.com/fail0verflow/letterbomb
 
-This is the reason you see a `pnpm-lock.yaml`. That being said, any package manager will work. This file can be safely be removed once you clone a template.
-
-```bash
-$ npm install # or pnpm install or yarn install
-```
-
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
+Has the advantage of being statically hostable and no longer requiring a captcha
 
 ## Available Scripts
 
